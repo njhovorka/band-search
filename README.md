@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Musicfox Band Search
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Programmed by: Nikoli Hovorka, with reference to one library and one external article for basic layout and functionality.
 
 ## Available Scripts
 
