@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Artists from './Artists';
-import logo from './logo.png'
 
 // App architecture via SearchPage, Artists, and SearchBar Components
 // inspired by an article from Praditiya Adhitana:
@@ -37,9 +36,6 @@ const SearchPage = (props) => {
 
   return (
     <>
-      <a href="https://fan.booster.musicfox.io">
-        <img src={ logo } alt="musicfox logo"/>
-      </a>
       <h1 style={{fontSize: 25, fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'}}>Our Bands</h1>
       <SearchBar
        input={input}
