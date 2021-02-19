@@ -1,71 +1,24 @@
 # Musicfox Band Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Programmed by: Nikoli Hovorka, with reference to one library and one external article for basic layout and functionality.
+This project implements React, Node, and Express to create a search application through a list of band names. 
 
-## Available Scripts
+Programmed by: Nikoli Hovorka
 
-In the project directory, you can run:
+Project issued by: Musicfox.io
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Clone the repository: `git clone https://github.com/njhovorka/band-search.git`. 
+- Ensure ports `3000` and `8080` are free for allocation locally.
+- In the terminal, navigate to the `band-search` repo. Then run `npm start`.
+- In another terminal window, run `node server.js`
+- Access the application via `https://localhost:3000`.
 
-### `yarn test`
+## Technical Write-up
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There exist many algorithms through which the similarity of two strings may be determined. Since this similarity is the essential 'scoring' method for band names against the entered query, I evaluated several methods to determine an appropriate fit (note: though some were already known, I discovered a concise article chronicling the most popular and effective algorithms currently employed: https://itnext.io/string-similarity-the-basic-know-your-algorithms-guide-3de3d7346227). 
 
-### `yarn build`
+A popular algorithmic subtype relating to this problem is dubbed 'edit-based'; i.e., the number of changes that would be made to a string to convert it into the string it is compared against. All of these algorithms (Levenshtein is among the chief of these) seemed too temporally complex to implement, especially with regards to the findings of several scholarly papers that showed less-than-profound accuracy superiority to the algorithm that was selected - Soreneson-Dice. Sorenson-Dice falls into the 'token-based' subset of similarity algorithms that simply find the amount of matching characters and/or substrings, or 'tokens' in two comparable strings. The simplicity of this algorithm, coupled by an open-source npm library that already implemented this calculation, became the driving motivators for my selection of this algorithm. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finally, some modification was given to the library's key algorithmic function to place a higher weight on strings who's first few characters aligned with ther search query - this is made under the assumption that many users simply type the first few characters of an artist and search assuming to find predicitive results. For example, if one types 'ibi' into the search query, 'Ibis Rupturing' should have a higher match ranking than 'Alibi', when through the normal coefficient calculation the opposite would be true. 
