@@ -9,7 +9,7 @@ Project issued by: Musicfox.io
 
 ## Setup
 
-- Clone the repository: `git clone (repo)`. 
+- Clone the repository: `git clone https://github.com/njhovorka/band-search.git`. 
 - Ensure ports `3000` and `8080` are free for allocation locally.
 - In the terminal, navigate to the `band-search` repo. Then run `npm start`.
 - In another terminal window, run `node server.js`
