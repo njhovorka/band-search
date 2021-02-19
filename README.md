@@ -1,7 +1,9 @@
 # Musicfox Band Search
 
-This project implements React, Node, and Express to create a search application through a compendium of bands. 
-Programmed by Nikoli Hovorka.
+This project implements React, Node, and Express to create a search application through a list of band names. 
+Programmed by: Nikoli Hovorka
+Project issued by: Musicfox.io
+
 
 ## Setup
 
